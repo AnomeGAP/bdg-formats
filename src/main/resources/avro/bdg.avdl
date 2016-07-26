@@ -461,6 +461,10 @@ record Variant {
    `referenceAllele` will have been observed in another sample.
    */
   union { boolean, null } isSomatic = false;
+
+  /* ANOME Specific Fields */
+  union { null, int }     alleleNumber = null;
+  union { null, int }     alleleCount = null;
 }
 
 /**
@@ -735,6 +739,20 @@ record Genotype {
    @see isPhased
    */
   union { null, int }     phaseQuality = null;
+
+  /* ANOME Specific Fields */
+  //union { null, int }   alleleNumber = null;
+  //union { null, int }   alleleCount = null;
+  union { null, double }  quality = null;  // quality: Phred-scaled quality score for the assertion made in ALT
+  array<string> homoAltSampleIds = [];
+  array<string> homoRefSampleIds = [];
+
+  union { null, string }  keyId = null;
+  union { null, string }  keyAlt = null;
+  union { null, string }  keyRef = null;
+  union { null, long }    keyStart = null;
+  union { null, long }    keyEnd = null;
+  union { null, string }  variantType = null;
 }
 
 /**
